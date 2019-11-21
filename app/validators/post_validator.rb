@@ -1,4 +1,6 @@
 class PostValidator < ActiveModel::Validator
 
-  def validator
+  def validate(record)
+  
+  end
 end
