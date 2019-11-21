@@ -1,14 +1,10 @@
 class PostValidator < ActiveModel::Validator
 
   def validate(record)
-    arr = [
-      /Won't Believe/,
-      /Secret/,
-      /Top/,
-      /Guess/
-    ]
-    if arr.none? { |check| check.match title}
-        errors.add(:title, "it must be clickbait")
+    if record.title != nil
+      unless record.title.match?(/(You|Won't Believe|Secret|Top \d|Guess)/)
+        record.errors[:title] << 'Please add a clickbait title!'
+      end
     end
   end
 end
